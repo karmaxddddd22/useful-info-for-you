@@ -1,0 +1,36 @@
+linux systems how they work and what they are (101).
+
+Linux is the best-known and most-used open source operating system. 
+As an operating system, 
+Linux is software that sits underneath all of the other software on a computer, 
+receiving requests from those programs and relaying these requests to the computer's hardware.
+
+there are linux kernals which kernals are inside most OS's.
+there are over 200 but im going over the most popular ones.
+In general, most kernels fall into one of three types: monolithic, microkernel, and hybrid.
+
+ubuntu/apache, 
+Ubuntu is a Linux distribution based on Debian and composed mostly of free and open-source software. 
+Ubuntu is officially released in three editions: 
+Desktop, Server, and Core for Internet of things devices and robots. 
+All the editions can run on the computer alone, or in a virtual machine.
+
+kali linux
+Kali Linux is a Debian-derived Linux distribution designed for digital forensics and penetration testing. 
+It is maintained and funded by Offensive Security.
+
+andriod
+Android is a mobile operating system based on a modified version of the Linux kernel and other open source software, 
+designed primarily for touchscreen mobile devices such as smartphones and tablets.
+
+parrot OS
+Parrot OS is a Linux distribution based on Debian with a focus on security, privacy, and development.
+
+debian
+Debian, also known as Debian GNU/Linux, is a GNU/Linux distribution composed of free and open-source software, 
+developed by the community-supported Debian Project, which was established by Ian Murdock on August 16, 1993
+
+mint OS
+Linux Mint is a community-driven Linux distribution based on Ubuntu, 
+bundled with a variety of free and open-source applications. 
+It can provide full out-of-the-box multimedia support for those who choose to include proprietary software such as multimedia codecs
