@@ -1,0 +1,176 @@
+Cryptography is the study of secure communications techniques that allow only the sender and intended
+ recipient of a message to view its contents.
+ The term is derived from the Greek word kryptos, which means hidden.
+
+
+Symmetric Encryption
+Symmetric encryption algorithms use the same secret key for both encryption and decryption. 
+This means that the sender and the recipient of an encrypted message need to share a copy of the secret key 
+via a secure channel before starting to send encrypted data. Symmetric encryption algorithms come in two 
+different varieties: block and stream ciphers.
+
+Block Ciphers
+A block cipher encrypts data in fixed-size chunks. For example, 
+the Advanced Encryption Standard (AES) uses a block length of 128 bits.
+
+If the plaintext is shorter than the block length, then it is padded out to the desired 
+length before encryption. At the other end, the recipient of the message will decrypt it 
+and then remove the padding to restore the original message.
+
+If a plaintext is longer than the block length, then it is broken up into 
+multiple different chunks for encryption. A block cipher mode of operation 
+defines how these chunks are related to one another.
+
+Each mode of operation has its pros and cons. For example, Electronic Code Book 
+(ECB) mode is the simplest mode of operation. With ECB, each block is encrypted completely independently.
+
+The downside of this is that blocks with the same plaintext produce the same ciphertext.  
+
+While this data is encrypted, the ciphertexts for a pixel 
+of a certain color (black, white, etc.) are the same throughout the image.
+Other modes of operation eliminate this issue by interrelating the encryption of each block. 
+ Some also provide additional features, such as Galois Counter Mode (GCM), which generates a 
+message authentication code (MAC) that verifies that data has not been modified in transit.
+
+Example: The Advanced Encryption Standard (AES)
+The most famous block cipher is the Advanced Encryption Standard (AES). 
+This encryption algorithm was selected as the result of a contest run by 
+the National Institute of Standards and Technology (NIST) to replace the 
+aging Data Encryption Standard (DES).
+
+AES is a family of three different algorithms designed to use a 128, 192, or 256 bit encryption key.
+ These algorithms are broken into a key schedule and an encryption algorithm.
+
+The encryption algorithm of AES is largely the same for all three versions.  
+It is divided into rounds, which are composed of a set of mathematical operations. 
+The main difference between the different AES versions is the number of rounds used: 10, 12, and 14.
+
+Each round of AES uses a unique round key that is derived from the original secret key.
+  Deriving these round keys is the job of the key schedule  Each AES version’s key schedule is
+ different because they take different length secret keys and produce different numbers of 128-bit round keys.
+
+Stream Ciphers
+The other type of symmetric encryption algorithm is a stream cipher.
+ Unlike a block cipher, a stream cipher encrypts a plaintext one bit at a time.
+
+Example: Rivest Cipher 4 (RC4)
+RC4 is an example of a widely-used stream cipher. It was created by Ron Rivest in 1987 and was originally a trade secret of RSA Security. In 1994, the details of the cipher were leaked, making it publicly usable.
+
+RC4 is used in a variety of different applications, including the WEP and WPA encryption standards for Wi-Fi. The cipher has some known vulnerabilities, especially for certain applications, but can still be used if some of the initial bytes of the generated keystream are discarded.
+
+Asymmetric Encryption
+Unlike symmetric encryption, asymmetric cryptography uses two different keys for encryption and decryption. The public key is used to encrypt a message, while the private key is used for decryption.
+
+The private key is a completely random number. The public key is derived from the private key using a mathematically “hard” problem.
+
+This “hard” problem is based on a mathematical operation that is “easy” to perform but “hard” to reverse. A number of different “hard” problems are used, including integer-based ones and ones based upon elliptic curves.
+
+Integer-Based Cryptography
+Integer-based asymmetric cryptography uses two main “hard” problems. These are the factoring and discrete logarithm problems.
+
+The factoring problem is based on the fact that it is relatively easy to multiply two numbers together but it is hard to factor them. In fact, factoring is so hard that the best way to do so (on a “classical” computer) is through a brute force search. Someone wanting to factor the product of two prime numbers needs to test potential factors until they happen to find one of the two factors, which can take a very long time.
+
+An asymmetric encryption algorithm based on the factoring problem will have a public key calculated using the product of two private keys (large prime numbers). This calculation is easy to perform, but anyone wanting to derive the private key from the public key will need to factor it, which is much harder.
+
+The difficulty of multiplication grows polynomially with the length of the factors, but the difficulty of factoring grows exponentially. This makes it possible to find a “sweet spot”, where a system is usable but essentially unbreakable.
+
+The discrete logarithm problem uses exponentiation and logarithms as its “easy” and “hard” operations. Similar to factoring, the complexity of calculating logarithms grows much more quickly as the size of the exponent increases.
+
+Example: Rivest-Shamir-Adleman (RSA)
+Symmetric encryption is a simple cryptographic algorithm by today’s standards, however, it was once considered state of the art. In fact, the German army used it to send private communications during World War II. The movie The Imitation Game actually does quite a good job of explaining how symmetric encryption works and the role it played during the war. 
+
+With symmetric encryption, a message that gets typed in plain text goes through mathematical permutations to become encrypted. The encrypted message is difficult to break because the same plain text letter does not always come out the same in the encrypted message. For example, the message “HHH” would not encrypt to three of the same characters. 
+
+To both encrypt and decrypt the message, you need the same key, hence the name symmetric encryption. While decrypting messages is exceedingly difficult without the key, the fact that the same key must be used to encrypt and decrypt the message carries significant risk. That’s because if the distribution channel used to share the key gets compromised, the whole system for secure messages is broken.
+
+One of the most famous asymmetric encryption algorithms in existence is the one developed by Ron Rivest, Adi Shamir, and Leonard Adleman called RSA. This algorithm is based on the factoring problem.
+
+Pros and Cons of Symmetric and Asymmetric Encryption
+Symmetric and asymmetric encryption algorithms both are designed to do the same job: protecting the confidentiality of data. However, they do their jobs in very different ways, and each approach has its pros and cons:
+
+Symmetric Encryption: The main advantage of symmetric cryptography is its efficiency.  In general, symmetric encryption algorithms use less memory and processing power than asymmetric cryptography.
+Asymmetric Encryption: Asymmetric encryption does not require the two parties to securely share a secret key before sending encrypted messages.  This makes it possible to securely communicate with anyone as long as you have their private key.
+ 
+
+These different strengths mean that symmetric and asymmetric cryptography are often used together, like in the TLS protocol. Asymmetric encryption is used to securely exchange a symmetric key, and symmetric encryption is used for bulk data transfer.
+
+Quantum Computing and Its Impacts on Cryptography
+When discussing the pros and cons of different encryption algorithms, it is important to take into account the growth of quantum computing. Quantum computers have the ability to break some of the asymmetric encryption algorithms in common use today.
+
+The reason for this is that some of the “hard” problems used in asymmetric cryptography are not “hard” for quantum computers. While factoring is exponentially difficult for a classical computer, it only has polynomial difficulty for a quantum computer due to the existence of Shor’s algorithm.
+
+If multiplication and factoring both have polynomial complexity, then it is impossible to build a cryptosystem using this problem that is both usable and secure. The same is true for the discrete logarithm problem. It is also broken once large enough quantum computers become available.
+
+However, this does not mean that quantum computing will be the end of asymmetric cryptography. New problems have been discovered that are believed to be “hard” for quantum computers as well. This has led to the development of new post-quantum asymmetric encryption algorithms based upon these new “hard” problems.
+
+Some common hashing algorithms include MD5, SHA-1, SHA-2, NTLM, and LANMAN. MD5: This is the fifth version of the Message Digest algorithm. MD5 creates 128-bit outputs. MD5 was a very commonly used hashing algorithm.
+
+How many types of hashes are there?
+Types of Hashing
+
+There are many different types of hash algorithms such as RipeMD, Tiger, xxhash and more, but the most common type of hashing used for file integrity checks are MD5, SHA-2 and CRC32. MD5 - An MD5 hash function encodes a string of information and encodes it into a 128-bit fingerprint.
+
+How many hash algorithms are there?
+Approved Algorithms
+
+FIPS 180-4 specifies seven hash algorithms: SHA-1 (Secure Hash Algorithm-1), and the. SHA-2 family of hash algorithms: SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224, and SHA-512/256.
+
+What Is a Hashing Algorithm?
+Dozens of different hashing algorithms exist, and they all work a little differently. But in each one, people type in data, and the program alters it to a different form. 
+
+All hashing algorithms are:
+
+Mathematical. Strict rules underlie the work an algorithm does, and those rules can’t be broken or adjusted.
+ 
+Uniform. Choose one type of hashing algorithm, and data of any character count put through the system will emerge at a length predetermined by the program.
+ 
+Consistent. The algorithm does just one thing (compress data) and nothing else.
+ 
+One way. Once transformed by the algorithm, it’s nearly impossible to revert the data to its original state. 
+It’s important to understand that hashing and encryption are different functions. You might use them in concert with one another. But don’t use the terms interchangeably.
+
+What Is a Hashing Algorithm?
+Dozens of different hashing algorithms exist, and they all work a little differently. But in each one, people type in data, and the program alters it to a different form. 
+
+All hashing algorithms are:
+
+Mathematical. Strict rules underlie the work an algorithm does, and those rules can’t be broken or adjusted.
+ 
+Uniform. Choose one type of hashing algorithm, and data of any character count put through the system will emerge at a length predetermined by the program.
+ 
+Consistent. The algorithm does just one thing (compress data) and nothing else.
+ 
+One way. Once transformed by the algorithm, it’s nearly impossible to revert the data to its original state. 
+It’s important to understand that hashing and encryption are different functions. You might use them in concert with one another. But don’t use the terms interchangeably.
+
+Hashing Algorithm Examples 
+It may be hard to understand just what these specialized programs do without seeing them in action. 
+
+Imagine that we'd like to hash the answer to a security question. We've asked, "Where was your first home?" The answer we're given is, "At the top of an apartment building in Queens." Here's how the hashes look with:
+
+MD5: 72b003ba1a806c3f94026568ad5c5933
+SHA-256: f6bf870a2a5bb6d26ddbeda8e903f3867f729785a36f89bfae896776777d50af
+Now, imagine that we've asked the same question of a different person, and her response is, "Chicago." Here's how hashes look with:
+
+MD-5: 9cfa1e69f507d007a516eb3e9f5074e2
+SHA-256: 0f5d983d203189bbffc5f686d01f6680bc6a83718a515fe42639347efc92478e
+Notice that the original messages don't have the same number of characters. But the algorithms produce hashes of a consistent length each time. 
+
+And notice that the hashes are completely garbled. It's nearly impossible to understand what they say and how they work. 
+
+Popular Hashing Algorithms Explained 
+Many different types of programs can transform text into a hash, and they all work slightly differently. 
+
+Common hashing algorithms include:
+
+MD-5. This is one of the first algorithms to gain widespread approval. It was designed in 1991, and at the time, it was considered remarkably secure.
+Since then, hackers have discovered how to decode the algorithm, and they can do so in seconds. Most experts feel it's not safe for widespread use since it is so easy to tear apart.
+ 
+
+RIPEMD-160. The RACE Integrity Primitives Evaluation Message Digest (or RIPEMD-160) was developed in Belgium in the mid-1990s. It's considered remarkably secure, as hackers haven't quite figured out how to crack it.
+ 
+SHA. Algorithms in the SHA family are considered slightly more secure. The first versions were developed by the United States government, but other programmers have built on the original frameworks and made later variations more stringent and harder to break. In general, the bigger the number after the letters "SHA," the more recent the release and the more complex the program.
+For example, SHA-3 includes sources of randomness in the code, which makes it much more difficult to crack than those that came before. It became a standard hashing algorithm in 2015 for that reason.
+ 
+
+Whirlpool. In 2000, designers created this algorithm based on the Advanced Encryption Standard. It's also considered very secure. 
