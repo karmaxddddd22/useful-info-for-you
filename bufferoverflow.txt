@@ -1,0 +1,25 @@
+
+buffer overflow explaination by pin
+
+
+We have the variable buffer which holds only 32 bytes
+ We're using gets(); to read input from the user
+
+The problem is that gets(); doesn't do any type of boundary/size checking, therefore, 
+you it'll read bytes until it hits an EOF.
+So essentially, you shouldn't use gets(); as it's a vulnerable 
+function that will cause a plethora of vulnerabilities, including buffer overflows
+In simple terms, the problem with gets(); is that it reads bytes arbitrarily
+
+So basically, if we were to enter more than 32 characters, we would probably get this message: Segmentation Fault
+
+This time, with the strcpy(); function
+strcpy(); is used for copying strings into a variables/buffers ..
+copies the string pointed by source (including the null character) to the destination.
+
+argv = argument vector
+It holds the given command line arguments
+
+So if we run the program like this ./example nigger, the argument nigger will be in argv[1]
+If we do ./example fuck niggers, the argument fuck will be in argv[1], and nigger will be in argv[2]
+answer is so if ./exmaple copy it will print it but if i enter ./over32byte the program will crash
