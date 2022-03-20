@@ -1,0 +1,35 @@
+for SQLI
+SQL allows us to easily read the contents of the database. Let’s take a look at a sample query:
+
+select username, high_score from users;
+
+Make sure you are able to run this query without any errors. 
+must end with ;
+
+One thing to notice is that the database didn’t show us the user_id and password columns. We can tell the database to show us all the available columns in the user table by using a *.
+
+select * from users;
+
+Which is identical to the below query where we specify each column we want to get:
+
+select username, user_id, password, high_score from users
+
+The * is shorthand for all available fields. We have created another table called dogs for you. View this table using a similar query as the one provided above.
+
+By now you should have a very high level view of databases and SQL. Let’s break down one more example that will highlight a common exploit against SQL databases: SQL injection. Let’s imagine we have an application that lets users search through various dogs available for adoption. Since we have a bunch of dogs that we need to store, we’ll use a database. We’ve given you the dog table, which you can view with:
+
+select * from dogs;
+In our application, since we want users to be able to search for dogs by name, we can slightly modify a query that we’ve seen before.
+
+select * from dogs where dog_name = '$user_search';
+** $user_search is a variable that contains whatever the user searched for in the app. For example, if the user searched for a dog with the name C-3PO the resulting query would be:
+
+select * from dogs where dog_name = 'C-3PO';
+This query will only show rows from the database where the dog name is equal to the name the user searched for. But here is the problem with writing a query like this. Since the text the user searched for is inside the query, if the user is clever, they can change the query that will ultimately be sent to the database. What text can a clever user input to turn the query into the one shown below? Remember, exactly what the user searches for will go in place of $user_search.
+
+select * from dogs where dog_name = 'irrelevant' or  '1'  = '1';
+If we can come up with an input that turns the query into the one above, we can see all the dogs – even dogs the creators of the website didn’t want us to! This works because it doesn’t matter what the name is – '1' is always equal to '1' – and thus every row will show. This is all fun and games when it’s just dogs we are talking about, but things get much worse when private user data such as credit card numbers, emails, or passwords are at play.
+
+HINT: You can check each of these options by replacing $user_search with the possible answer and running the query. The one that works will be one that returns all the rows in the database.
+
+
